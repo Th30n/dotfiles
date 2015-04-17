@@ -9,6 +9,6 @@ separate repository.
 In order to install follow these steps:
 
   * `git clone https://github.com/Th30n/dotfiles.git dotfiles`
-  * Change directory to repository root `cd dotfiles`
-  * This will **delete** and replace your configuration with those from
-    the repository: `bash link-em-up`
+  * `cd dotfiles` - change directory to repository root
+  * `bash link-em-up` - **delete** and replace your configuration
+    with those from the repository
