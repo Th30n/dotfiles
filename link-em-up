@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Creates links from home dotfiles to these in repo.
+echo "Deleting previous configuration files and directories!"
+rm -rf ~/.dircolors ~/.terminfo ~/.tmux.conf ~/.Xresources \
+  ~/.zshenv ~/zsh-fns ~/.zshrc
+
+echo "Creating links..."
+ln -s ${PWD}/dircolors ~/.dircolors
+ln -s ${PWD}/terminfo ~/.terminfo
+ln -s ${PWD}/tmux.conf ~/.tmux.conf
+ln -s ${PWD}/Xresources ~/.Xresources
+ln -s ${PWD}/zshenv ~/.zshenv
+ln -s ${PWD}/zsh-fns ~/zsh-fns
+ln -s ${PWD}/zshrc ~/.zshrc

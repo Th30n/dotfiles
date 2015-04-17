@@ -1,0 +1,60 @@
+# My custom zsh prompt
+# Inspired by oh-my-zsh
+# TODO: Figure out a better name...
+
+prompt_teon_precmd() {
+
+PROMPT="%F{1}λ %f%F{12}%n@%M%f %B%F{3}→%f%b %F{2}%~%f
+%F{1}[%f%F{6}%D %T%f%F{1}]%f\
+$(git_prompt_info)\
+%(?.. %F{1}[%f%F{11}%?%f%F{1}]%f) \
+%(!.%F{9}#%f.%F{2}$%f) "
+
+}
+
+git_prompt_info() {
+  local gdir=""
+  local branch=""
+  local dirty=""
+  local repo_info
+  repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
+                      --is-bare-repository --is-inside-work-tree \
+                      --short HEAD 2> /dev/null)"
+  if [[ "$?" == "0" ]]; then
+    gdir="${repo_info%%$'\n'*}"
+    local short_hash="${repo_info##*$'\n'}"
+    local reb=""
+    local step=""
+    local total=""
+    if [[ -d "$gdir/rebase-merge" ]]; then
+      read branch 2> /dev/null < "$gdir/rebase-merge/head-name"
+      read step 2> /dev/null < "$gdir/rebase-merge/msgnum"
+      read total 2> /dev/null < "$gdir/rebase-merge/end"
+      if [[ -f "$gdir/rebase-merge/interactive" ]]; then
+        reb="|rebase-i"
+      else
+        reb="|rebase-m"
+      fi
+    else
+      branch="$(git symbolic-ref HEAD 2> /dev/null)"
+      # Detached when empty
+      if [[ -z "$branch" ]]; then
+        branch="$short_hash..."
+      fi
+    fi
+    if [[ -n "$step" && -n "$total" ]]; then
+      reb="$reb $step/$total"
+    fi
+    branch=${branch##refs/heads/}
+    git diff --no-ext-diff --quiet || dirty="●"
+    local gitprompt="%F{3}$branch$reb%f${dirty:+ %F{9\}$dirty%f}"
+    printf " %%F{3}(%%f%s%%F{3})%%f" "$gitprompt"
+  fi
+}
+
+prompt_teon_setup () {
+  setopt promptsubst
+  add-zsh-hook precmd prompt_teon_precmd
+}
+
+prompt_teon_setup "$@"

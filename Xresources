@@ -1,0 +1,45 @@
+! Terminal colors
+
+*background: #111111
+*foreground: #babdb6
+! Black + Bright Black
+*color0: #000000
+*color8: #555753
+! Red + Bright Red
+*color1:  #ff3434
+*color9:  #ff6565
+! Green + Bright Green
+*color2:  #93d44f
+*color10: #bae78b
+! Yellow + Bright Yellow
+*color3:  #eab93d
+*color11: #ffc123
+! Blue + Bright Blue
+*color4:  #204a87
+*color12: #3465a4
+! Magenta + Bright Magenta
+*color5:  #ce5c00
+*color13: #f57900
+!Cyan + Bright Cyan
+*color6:  #89b6e2
+*color14: #46a4ff
+! White + Bright white
+*color7:  #cccccc
+*color15: #ffffff
+
+! urxvt terminal options
+URxvt.font: xft:inconsolata:style=medium:size=12:antialias=true, \
+            xft:dejavusansmono:style=regular:size=10:antialias=true
+URxvt.scrollBar: false
+URxvt.cursorBlink: true
+URxvt.cursorColor: 6
+URxvt.cursorUnderline: false
+URxvt.saveLines: 1000
+! Borderless does not work properly on Mate Desktop
+URxvt.borderLess: false
+URxvt.override-redirect: false
+! secondary screen (e.g. less) disable terminal scroll
+URxvt.secondaryScreen: true
+URxvt.secondaryScroll: true
+! perl extensions
+URxvt.perl-ext-common: default,confirm-paste
