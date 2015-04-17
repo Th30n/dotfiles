@@ -1,15 +1,14 @@
 #!/bin/bash
 
-# Creates links from home dotfiles to these in repo.
-echo "Deleting previous configuration files and directories!"
-rm -rf ~/.dircolors ~/.terminfo ~/.tmux.conf ~/.Xresources \
-  ~/.zshenv ~/zsh-fns ~/.zshrc
+dotfiles="dircolors terminfo tmux.conf Xresources zshenv zshrc"
+nodotfiles="zsh-fns"
 
-echo "Creating links..."
-ln -s ${PWD}/dircolors ~/.dircolors
-ln -s ${PWD}/terminfo ~/.terminfo
-ln -s ${PWD}/tmux.conf ~/.tmux.conf
-ln -s ${PWD}/Xresources ~/.Xresources
-ln -s ${PWD}/zshenv ~/.zshenv
-ln -s ${PWD}/zsh-fns ~/zsh-fns
-ln -s ${PWD}/zshrc ~/.zshrc
+echo "Deleting previous configuration and creating links..."
+for f in $dotfiles; do
+  rm -rf ~/.$f
+  ln -s $PWD/$f ~/.$f
+done
+for f in $nodotfiles; do
+  rm -rf ~/$f
+  ln -s $PWD/$f ~/$f
+done

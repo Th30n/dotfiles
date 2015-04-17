@@ -10,5 +10,10 @@ In order to install follow these steps:
 
   * `git clone https://github.com/Th30n/dotfiles.git dotfiles`
   * `cd dotfiles` - change directory to repository root
-  * `bash link-em-up` - **delete** and replace your configuration
+  * `./link-em-up` - **delete** and replace your configuration
     with those from the repository
+
+## Updating
+
+Just do a `git pull` inside repository. New modifications can easily
+be reverted by `git checkout` on an old commit.
