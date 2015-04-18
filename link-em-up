@@ -1,8 +1,8 @@
 #!/bin/bash
 
 dotfiles="dircolors gitconfig gitignore terminfo tmux.conf Xresources \
-  zshenv zshrc"
-nodotfiles="zsh-fns"
+  zsh.d zshenv zshrc"
+nodotfiles=""
 
 echo "Deleting previous configuration and creating links..."
 for f in $dotfiles; do

@@ -1,5 +1,5 @@
 # Set function path
-fpath=(~/zsh-fns $fpath)
+fpath=(~/.zsh.d/functions $fpath)
 
 autoload -Uz promptinit
 promptinit
