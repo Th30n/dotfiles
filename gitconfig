@@ -1,0 +1,13 @@
+[user]
+	email = theongugl@gmail.com
+	name = Teon Banek
+[alias]
+	co = checkout
+[push]
+	default = current
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[core]
+	excludesfile = /home/teon/.gitignore
