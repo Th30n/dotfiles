@@ -50,9 +50,9 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
   function zle-line-finish () {
       echoti rmkx
   }
+  zle -N zle-line-init
+  zle -N zle-line-finish
 fi
-zle -N zle-line-init
-zle -N zle-line-finish
 #----------------------------------------------------------------------------
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
