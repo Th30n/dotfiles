@@ -13,6 +13,9 @@ In order to install follow these steps:
   * `./link-em-up` - **delete** and replace your configuration
     with those from the repository
 
+You will probably want to edit gitconfig and zshrc to suit your environment
+but this setup **does not try** to be cross compatible for other users.
+
 ## Updating
 
 Just do a `git pull` inside repository. New modifications can easily
