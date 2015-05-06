@@ -3,6 +3,12 @@
 	name = Teon Banek
 [alias]
 	co = checkout
+  cm = commit
+	st = status
+	rb = rebase
+	rbi = rebase --interactive
+  rbc = rebase --continue
+  chp = cherry-pick
 [push]
 	default = current
 [color]
