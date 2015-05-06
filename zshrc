@@ -121,3 +121,8 @@ fi
 # so path needs to be set here
 typeset -U path
 path=(~/bin ~/.cabal/bin $path)
+
+# Load site local settings
+if [[ -f ~/.zsh_local ]] then
+  source ~/.zsh_local
+fi
