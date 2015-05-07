@@ -4,6 +4,7 @@
 [alias]
 	co = checkout
   cm = commit
+  cma = commit --amend
 	st = status
 	rb = rebase
 	rbi = rebase --interactive
