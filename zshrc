@@ -93,6 +93,9 @@ alias lal='ls -Al'
 alias lla='ls -Al'
 alias grep='grep --color=auto'
 alias g='gvim --remote-silent'
+alias py='python'
+alias py2='python2'
+alias py3='python3'
 alias -s c=g
 alias -s cpp=g
 alias -s txt=g
