@@ -10,6 +10,7 @@
 	rbi = rebase --interactive
 	rbc = rebase --continue
 	chp = cherry-pick
+	bs = bisect
 [push]
 	default = current
 [color]
