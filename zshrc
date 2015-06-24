@@ -8,6 +8,9 @@ prompt teon
 unsetopt beep
 setopt histignorealldups sharehistory
 
+# Bash word style (alphanumeric only)
+autoload -U select-word-style
+select-word-style bash
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
