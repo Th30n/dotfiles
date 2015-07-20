@@ -11,6 +11,7 @@
 	rbc = rebase --continue
 	chp = cherry-pick
 	bs = bisect
+	df = diff
 [push]
 	default = current
 [color]
