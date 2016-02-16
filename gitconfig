@@ -12,6 +12,9 @@
 	chp = cherry-pick
 	bs = bisect
 	df = diff
+	f = fetch
+	m = merge
+	p = push
 [push]
 	default = current
 [color]
