@@ -58,9 +58,10 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
 fi
 #----------------------------------------------------------------------------
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+# Keep 1000 lines of history within the shell session.
 HISTSIZE=1000
-SAVEHIST=1000
+# Save 10,000 lines of history to ~/.zsh_history.
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 # Colors for ls output
