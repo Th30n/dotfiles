@@ -35,6 +35,8 @@ URxvt.cursorBlink: true
 URxvt.cursorColor: 6
 URxvt.cursorUnderline: false
 URxvt.saveLines: 1000
+! Hide mouse when typing or idle
+URxvt.pointerBlank: true
 ! Borderless does not work properly on Mate Desktop
 URxvt.borderLess: false
 URxvt.override-redirect: false
