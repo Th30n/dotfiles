@@ -15,6 +15,7 @@
 	f = fetch
 	m = merge
 	p = push
+	pfl = push --force-with-lease
 [push]
 	default = current
 [color]
