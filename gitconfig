@@ -16,6 +16,7 @@
 	m = merge
 	p = push
 	pfl = push --force-with-lease
+	br = branch
 [push]
 	default = current
 [color]
