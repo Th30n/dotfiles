@@ -1,0 +1,2 @@
+# Make Caps Lock additional Escape
+setxkbmap -option caps:escape
