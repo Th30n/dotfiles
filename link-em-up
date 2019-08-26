@@ -1,7 +1,7 @@
 #!/bin/bash
 
-dotfiles="dircolors gitconfig gitignore stylish-haskell.yaml terminfo \
-  tmux.conf Xresources xprofile zsh.d zshenv zshrc"
+dotfiles="dircolors gitconfig gitignore repl-help.lisp stylish-haskell.yaml \
+  terminfo tmux.conf Xresources xprofile zsh.d zshenv zshrc"
 nodotfiles=""
 
 echo "Deleting previous configuration and creating links..."
