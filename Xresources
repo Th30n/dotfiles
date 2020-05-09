@@ -30,9 +30,9 @@
 ! urxvt terminal options
 URxvt.inputMethod: ibus
 URxvt.preeditType: OverTheSpot
-URxvt.font: xft:inconsolata:style=medium:size=12:antialias=true, \
-            xft:dejavusansmono:style=regular:size=10:antialias=true, \
-            xft:sourcehansans:style=regular:size=10:antialias=true
+URxvt.font: xft:inconsolata:style=medium:size=14:antialias=true, \
+            xft:dejavusansmono:style=regular:size=12:antialias=true, \
+            xft:sourcehansans:style=regular:size=12:antialias=true
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
 URxvt.cursorColor: 6
