@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 dotfiles="dircolors gitconfig gitignore repl-help.lisp stylish-haskell.yaml \
   terminfo tmux.conf Xresources xprofile zsh.d zshenv zshrc"
@@ -13,3 +13,9 @@ for f in $nodotfiles; do
   rm -rf ~/$f
   ln -s $PWD/$f ~/$f
 done
+
+if [[ $1 = "-i3" ]]; then
+  echo "Replacing .config/i3/ and .config/i3status/"
+  rm -rf ~/.config/i3 && ln -s $PWD/config/i3 ~/.config/i3
+  rm -rf ~/.config/i3status && ln -s $PWD/config/i3status ~/.config/i3status
+fi
