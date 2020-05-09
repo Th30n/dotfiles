@@ -43,8 +43,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Other laptop Fn keys
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
 bindsym XF86Display exec toggle-monitor
 bindsym --release Print exec --no-startup-id scrot --silent && notify-send -u low 'Screenshot taken'
 bindsym --release Shift+Print exec --no-startup-id scrot --silent --select
