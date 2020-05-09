@@ -28,8 +28,11 @@
 *color15: #ffffff
 
 ! urxvt terminal options
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
 URxvt.font: xft:inconsolata:style=medium:size=12:antialias=true, \
-            xft:dejavusansmono:style=regular:size=10:antialias=true
+            xft:dejavusansmono:style=regular:size=10:antialias=true, \
+            xft:sourcehansans:style=regular:size=10:antialias=true
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
 URxvt.cursorColor: 6
@@ -44,4 +47,7 @@ URxvt.override-redirect: false
 URxvt.secondaryScreen: true
 URxvt.secondaryScroll: true
 ! perl extensions
-URxvt.perl-ext-common: default,confirm-paste
+URxvt.perl-ext-common: default,confirm-paste,matcher
+URxvt.url-launcher: /usr/bin/firefox
+! perl-matcher extension, open url with lmb
+URxvt.matcher.button: 1
