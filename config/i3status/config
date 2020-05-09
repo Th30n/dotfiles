@@ -19,6 +19,7 @@ order += "ethernet _first_"
 order += "battery all"
 order += "cpu_temperature 0"
 order += "load"
+order += "memory"
 order += "volume master"
 order += "tztime local"
 
@@ -28,7 +29,6 @@ wireless _first_ {
 }
 
 ethernet _first_ {
-        # if you use %speed, i3status requires root privileges
         format_up = "E: %ip (%speed)"
         format_down = "E: down"
 }
@@ -38,14 +38,6 @@ battery all {
         hide_seconds = "true"
         low_threshold = "15"
         threshold_type = "time"
-}
-
-tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
-}
-
-load {
-        format = "%1min"
 }
 
 disk "/" {
@@ -70,4 +62,18 @@ volume master {
         format = "♪: %volume"
         format_muted = "♪: M (%volume)"
         device = "pulse"
+}
+
+load {
+        format = "%1min"
+}
+
+memory {
+        format = "%used | %available"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
 }
