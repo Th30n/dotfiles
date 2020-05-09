@@ -16,6 +16,8 @@ In order to install follow these steps:
 You will probably want to edit gitconfig and zshrc to suit your environment
 but this setup **does not try** to be cross compatible for other users.
 
+NOTE: `bin` directory is never linked.
+
 ## Updating
 
 Just do a `git pull` inside repository. New modifications can easily

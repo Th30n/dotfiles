@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ "$EUID" != "0" ]]; then
+  echo "error: you cannot perform this operation unless you are root." >&2
+  exit 1
+fi
+
+reflector --verbose -l 10 --sort rate --save /etc/pacman.d/mirrorlist
+pacman -Syu
