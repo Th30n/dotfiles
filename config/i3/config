@@ -42,6 +42,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Other laptop Fn keys
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
+bindsym --release Print exec --no-startup-id scrot && notify-send -u low 'Screenshot taken'
+bindsym --release Shift+Print exec --no-startup-id scrot --select
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
