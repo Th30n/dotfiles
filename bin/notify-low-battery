@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+bat=/sys/class/power_supply/BAT0/uevent
+low_perc=10
+
+if grep POWER_SUPPLY_STATUS=Discharging $bat > /dev/null; then
+  full=$(grep ENERGY_FULL_DESIGN $bat | cut -d= -f2)
+  now=$(grep ENERGY_NOW $bat | cut -d= -f2)
+  now_perc=$((100 * $now / $full))
+
+  if [[ $now_perc -lt $low_perc ]]; then
+    notify-send -u critical -c battery "Low battery!" "$now_perc%"
+  fi
+fi
