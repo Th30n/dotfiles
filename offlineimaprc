@@ -1,0 +1,46 @@
+# NOTE: Prefer systemd timer to run offlineimap periodically.
+# Replace `<ACCOUNT>` with your details.
+
+[general]
+accounts = <ACCOUNT>
+# Try not to wreck SSD with constant fsync
+fsync = False
+pythonfile = ~/.offlineimap.py
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/offlineimap.mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
+incremental = no
+
+[Account <ACCOUNT>]
+localrepository = <ACCOUNT>-local
+remoterepository = <ACCOUNT>-remote
+postsynchook = ~/bin/notify-new-mail -a <ACCOUNT>
+
+[Repository <ACCOUNT>-local]
+type = Maildir
+localfolders = ~/Mail/<ACCOUNT>
+nametrans = lambda folder: {'sent': '[Gmail]/Sent Mail',
+                           }.get(folder, folder)
+
+[Repository <ACCOUNT>-remote]
+type = Gmail
+# Obtain username and password from functions in ~/.offlineimap.py
+remoteusereval = get_username()
+remotepasseval = get_password()
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+# Don't delete messages on Gmail server.
+expunge = no
+nametrans = lambda folder: {'[Gmail]/Sent Mail': 'sent',
+                           }.get(folder, folder)
+# Sync only these folders.
+folderfilter = lambda foldername: foldername in ['INBOX',
+                                                 '[Gmail]/Sent Mail',
+                                                ]
+# Don't (accidentally) create new folders on Gmail server by mirroring local
+# folder structure.
+createfolders = False

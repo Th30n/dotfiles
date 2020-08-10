@@ -13,10 +13,13 @@ In order to install follow these steps:
   * `./link-em-up` - **delete** and replace your configuration
     with those from the repository
 
-You will probably want to edit gitconfig and zshrc to suit your environment
-but this setup **does not try** to be cross compatible for other users.
+You will probably want to edit `gitconfig` and `zshrc` to suit your
+environment but this setup **does not try** to be cross compatible for other
+users.
 
-NOTE: `bin` directory is never linked.
+NOTE: `bin` directory is never linked, neither are e-mail related
+configuration (e.g. `offlineimaprc`). They may need to be tweaked for the
+particular system/user.
 
 ## Updating
 
