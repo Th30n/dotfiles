@@ -1,0 +1,69 @@
+# NOTE: If using `msmtp` as `sendmail`, be sure to setup `.msmtprc`
+# All of the local stuff is inside `~/.mutt` directory, so be sure to create that.
+set folder = "~/Mail/"
+set signature = "~/.mutt/signature"
+set postponed = "+postponed"
+set beep_new
+set send_charset = "utf-8"
+# Generate 'From' header.
+set use_from
+# Make no distinction between new and old unread.
+unset mark_old
+# Repeat n lines on next/prev page.
+set pager_context = 3
+# Don't allow moving to new mail via page movement.
+set pager_stop
+# Group threads only by header data.
+set strict_threads
+set sort = threads
+set sort_aux = last-date
+# Use gpg.
+set crypt_use_gpgme
+# Auto reply encrypted, signed etc.
+set crypt_replyencrypt
+set crypt_replysign
+set crypt_replysignencrypted
+set crypt_verify_sig
+# Block waiting for input for n seconds.
+set timeout = 5
+
+# Colors
+color normal color7 default
+color indicator color0 color6
+color status color12 color0
+color error color15 color1
+color hdrdefault color10 default
+color header color3 default "Subject:"
+color tree color8 default
+color quoted color8 default
+color markers color8 default
+color signature color10 default
+color search color0 color10
+color index color2 color0 ~N
+color index color1 default ~D
+color attachment color5 default
+# 256 color
+color quoted0 color245 default
+color quoted1 color8 default
+color quoted2 color236 default
+color quoted3 color236 default
+color quoted4 color236 default
+color quoted5 color236 default
+color quoted6 color236 default
+color quoted7 color236 default
+color quoted8 color236 default
+color quoted9 color236 default
+
+# Contacts
+set alias_file = "~/.mutt/aliases"
+set sort_alias = alias
+set reverse_alias
+source $alias_file
+
+# Mailing lists info
+source "~/.mutt/mailing-lists"
+
+source "~/.mutt/offlineimap.mailboxes"
+
+# Setup here `spoolfile`, `alternates` and other local/private details.
+source "~/.mutt/local"
