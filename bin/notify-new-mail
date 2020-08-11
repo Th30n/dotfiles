@@ -8,7 +8,12 @@ import subprocess
 _NOTIFY_FMT = "notify-send -u normal -c mail 'New mail [{mail_dir}]' '{subject}'"
 
 
-def _notify_send(mail_dir='INBOX', subject='<NO SUBJECT>'):
+def _notify_send(mail_dir='INBOX', subject=None, froms=None):
+    assert isinstance(subject, (str, None))
+    if subject is None or not subject.strip():
+        subject = '<NO SUBJECT>'
+    if froms:
+        subject = '{}\n{}'.format(', '.join(froms), subject)
     subprocess.check_output(_NOTIFY_FMT.format(mail_dir=mail_dir, subject=subject),
                             shell=True)
 
@@ -46,11 +51,14 @@ for mail_dir in os.listdir(account_dir):
             if atime - mtime >= 60:
                 continue
             with open(mail) as mail_contents:
+                subject = 'Subject:'
+                subject_contents = None
+                from_ = 'From:'
+                froms = None
                 for line in mail_contents:
-                    subject = 'Subject: '
                     if line.startswith(subject):
-                        _notify_send(mail_dir=mail_dir,
-                                     subject=_decode_header(line[len(subject):]))
-                        break
-                else:
-                    _notify_send(mail_dir=mail_dir)
+                        subject_contents = _decode_header(line[len(subject):])
+                    elif line.startswith(from_):
+                        froms = [_decode_header(fr[0])
+                                 for fr in map(str.split, line[len(from_):].split(','))]
+                _notify_send(mail_dir=mail_dir, subject=subject_contents, froms=froms)
