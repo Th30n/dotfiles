@@ -8,7 +8,7 @@ import os
 import shlex
 import subprocess
 
-_NOTIFY_FMT = "notify-send -u normal -c mail 'New mail [{mail_dir}]' {subject}"
+_NOTIFY_FMT = "notify-send -u normal -c mail {title} {body}"
 
 
 def _notify_send(mail_dir='INBOX', subject=None, from_=None):
@@ -17,7 +17,9 @@ def _notify_send(mail_dir='INBOX', subject=None, from_=None):
         subject = '<NO SUBJECT>'
     if from_:
         subject = '{}\n{}'.format(from_, subject)
-    subprocess.check_output(_NOTIFY_FMT.format(mail_dir=mail_dir, subject=shlex.quote(subject)),
+    title = 'New mail [{}]'.format(mail_dir)
+    subprocess.check_output(_NOTIFY_FMT.format(title=shlex.quote(title),
+                                               body=shlex.quote(subject)),
                             shell=True)
 
 
