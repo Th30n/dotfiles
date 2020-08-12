@@ -33,8 +33,8 @@ def _decode_header(header_string):
             return str_or_bytes.decode('ascii')
         assert isinstance(str_or_bytes, str)
         return str_or_bytes
-    return [email.utils.unquote(to_str(decoded, charset))
-            for decoded, charset in email.header.decode_header(header_string)]
+    return ''.join(email.utils.unquote(to_str(decoded, charset))
+                   for decoded, charset in email.header.decode_header(header_string))
 
 
 parser = argparse.ArgumentParser(description='Check for new mail and send desktop notification')
@@ -56,7 +56,7 @@ for mail_dir in os.listdir(account_dir):
                 continue
             with open(mail) as mail_contents:
                 headers = HeaderParser().parse(mail_contents)
-                subject, = _decode_header(headers['subject'])
+                subject = _decode_header(headers['subject'])
                 from_name, from_addr = email.utils.parseaddr(headers['from'])
-                from_ = _decode_header(from_name)[0] if from_name else from_addr
+                from_ = _decode_header(from_name) if from_name else from_addr
                 _notify_send(mail_dir=mail_dir, subject=subject, from_=from_)
