@@ -44,7 +44,7 @@ ibus-daemon -dxr
 # Set background image
 # sh $HOME/.fehbg &
 xscreensaver -no-splash &
-clight &
+xset -dpms
 systemctl --user start dunst
 # Default to i3wm
 exec i3
