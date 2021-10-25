@@ -46,8 +46,13 @@ export GLFW_IM_MODULE=ibus
 
 # Set background image
 # sh $HOME/.fehbg &
-xscreensaver -no-splash &
+xset s 0
+xset dpms 0 0 0
 xset -dpms
+xset -b
+xscreensaver -no-splash &
 systemctl --user start dunst
+# Compositor with v-sync to prevent tearing
+picom -b
 # Default to i3wm
 exec i3
