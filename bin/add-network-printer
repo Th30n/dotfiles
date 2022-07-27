@@ -1,0 +1,14 @@
+#!/bin/bash -e
+
+if [[ "$#" != "2" ]]; then
+  echo "USAGE: $0 name-without-spaces ip-addr"
+  echo "You can find the printer's address via avahi-discover (through UDP port 5353)."
+  exit 1
+fi
+
+lpadmin -p $1 -E -v "ipp://$2/ipp/print" -m everywhere
+
+echo "Inspect the printers with lpstat; and printer queue with lpq"
+
+echo "Remove the printer cleanly with:"
+echo "cupsreject $1; cupsdisable $1; lpadmin -x $1"
