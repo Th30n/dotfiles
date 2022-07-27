@@ -41,6 +41,7 @@ color signature color10 default
 color search color0 color10
 color index color2 color0 ~N
 color index color1 default ~D
+color index bold color245 default ~v # collapsed thread
 color attachment color5 default
 # 256 color
 color quoted0 color245 default
