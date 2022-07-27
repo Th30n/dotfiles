@@ -41,6 +41,9 @@ export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
 ibus-daemon -dxr
 
+# Setup IBus for `kitty` terminal emulator
+export GLFW_IM_MODULE=ibus
+
 # Set background image
 # sh $HOME/.fehbg &
 xscreensaver -no-splash &

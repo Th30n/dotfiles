@@ -1,0 +1,5 @@
+layout tall
+launch zsh
+launch htop
+new_tab
+launch mutt
