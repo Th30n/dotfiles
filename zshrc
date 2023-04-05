@@ -101,6 +101,7 @@ alias py='python'
 alias py2='python2'
 alias py3='python3'
 alias pacremorph='sudo pacman -Rns $(pacman -Qtdq)'
+alias kitty-ssh='kitty +kitten ssh'
 alias -s c=g
 alias -s cpp=g
 alias -s txt=g
