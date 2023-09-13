@@ -1,0 +1,9 @@
+[Unit]
+Description=Run low-battery.service periodically
+
+[Timer]
+OnBootSec=300
+OnUnitInactiveSec=300
+
+[Install]
+WantedBy=timers.target
