@@ -194,3 +194,5 @@ bar {
 
 # Hide screen edge borderds
 hide_edge_borders both
+# Display window icon in title bar
+for_window [all] title_window_icon padding 7px
