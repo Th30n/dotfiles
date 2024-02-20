@@ -4,12 +4,20 @@
 
 prompt_teon_precmd() {
 
-PROMPT="%F{1}λ %f%F{12}%n@%M%f %B%F{3}→%f%b %F{2}%~%f
+PROMPT="%F{1}λ %f%F{12}%n@%M%f$(ranger_prompt_info) %B%F{3}→%f%b %F{2}%~%f
 %F{1}[%f%F{6}%D %T%f%F{1}]%f\
 $(git_prompt_info)\
 %(?.. %F{1}[%f%F{11}%?%f%F{1}]%f) \
 %(!.%F{9}#%f.%F{2}$%f) "
 
+}
+
+ranger_prompt_info() {
+  local ranger=""
+  if [[ -n "$RANGER_LEVEL" ]]; then
+    ranger="[ranger]"
+    printf " %s" "$ranger"
+  fi
 }
 
 git_prompt_info() {
