@@ -1,0 +1,5 @@
+[Unit]
+Description=Change the kitty theme according to time of the day.
+
+[Service]
+ExecStart=/home/teon/bin/kitty-theme-for-time-of-day

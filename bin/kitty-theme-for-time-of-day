@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+curr_hour=$(date +%_H)
+
+if [[ $curr_hour -gt 7 && $curr_hour -lt 17 ]]; then
+  kitten themes --reload-in=all Gruvbox Light
+else
+  kitten themes --reload-in=all Gruvbox Dark
+fi
