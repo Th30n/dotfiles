@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 bat=/sys/class/power_supply/BAT0/uevent
-low_perc=10
+low_perc=20
 
 if grep POWER_SUPPLY_STATUS=Discharging $bat > /dev/null; then
   full=$(grep ENERGY_FULL_DESIGN $bat | cut -d= -f2)
