@@ -30,22 +30,31 @@ def _notify_send(title, body, urgency='low'):
 def get_monitors():
     return [Monitor.parse(l)
             for l in sp.check_output('xrandr', encoding='utf-8').splitlines()
+            # NOTE: 'connected' is also in 'disconnected', so this is only for
+            # distinguishing lines which define a possible monitor output
             if 'connected' in l]
 
 
 def toggle_external_monitor():
-    ms = get_monitors()
-    primary = ms[0]
-    secondary = ms[1]
-    if secondary.is_connected:
+    monitors = get_monitors()
+    connected_monitors = [m for m in get_monitors() if m.is_connected]
+    primary = connected_monitors[0]
+    if len(connected_monitors) > 1:
+        secondary = connected_monitors[1]
         xrandr_cmd = ('xrandr', '--output', primary.name, '--primary', '--auto',
                       '--output', secondary.name, '--right-of', primary.name, '--auto')
         _notify_send(secondary.name + ' -- ON ', join(xrandr_cmd))
         sp.check_call(xrandr_cmd)
+        if len(connected_monitors) > 2:
+            _notify_send('Not yet implemented', 'Support for more than 2 monitors',
+                         urgency='normal')
     else:
-        xrandr_cmd = ('xrandr', '--output', primary.name, '--primary', '--auto',
-                      '--output', secondary.name, '--off')
-        _notify_send(secondary.name + ' -- OFF', join(xrandr_cmd))
+        xrandr_cmd = ('xrandr', '--output', primary.name, '--primary', '--auto')
+        for m in monitors:
+            if m.is_connected:
+                continue
+            xrandr_cmd += ('--output', m.name, '--off')
+        _notify_send(primary.name + ' -- ON', join(xrandr_cmd))
         sp.check_call(xrandr_cmd)
 
 
