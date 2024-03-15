@@ -96,18 +96,15 @@ alias la='ls -A'
 alias lal='ls -Al'
 alias lla='ls -Al'
 alias grep='grep -n --color=auto'
-alias g='gvim --remote-silent'
 alias vimr='vim --remote-tab-silent'
 alias vims='vim --servername vim'
+alias gvimr='gvim --remote-tab-silent'
+alias gvims='gvim --servername vim'
 alias py='python'
 alias py2='python2'
 alias py3='python3'
 alias pacremorph='sudo pacman -Rns $(pacman -Qtdq)'
 alias kitty-ssh='kitty +kitten ssh'
-alias -s c=g
-alias -s cpp=g
-alias -s txt=g
-alias -s py=g
 
 # Fortune
 if [[ -x /usr/bin/fortune ]] then
