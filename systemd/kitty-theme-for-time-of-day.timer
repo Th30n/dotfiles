@@ -3,7 +3,7 @@ Description=Run kitty-theme-for-time-of-day.service periodically
 
 [Timer]
 OnBootSec=60
-OnCalendar=7:00:59
+OnCalendar=8:00:59
 OnCalendar=17:00:59
 
 [Install]
