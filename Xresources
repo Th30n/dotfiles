@@ -51,3 +51,6 @@ URxvt.perl-ext-common: default,confirm-paste,matcher
 URxvt.url-launcher: /usr/bin/firefox
 ! perl-matcher extension, open url with lmb
 URxvt.matcher.button: 1
+
+! Default DPI
+Xft.dpi: 96
