@@ -1,0 +1,6 @@
+[Unit]
+Description=Notify to take a break & drink water
+
+[Service]
+ExecStart=notify-send "Take a break & drink water"
+
