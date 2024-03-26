@@ -18,6 +18,7 @@
 	p = push
 	pfl = push --force-with-lease
 	br = branch
+	slog = shortlog
 [push]
 	default = current
 [color]
