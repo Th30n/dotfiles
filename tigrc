@@ -1,0 +1,6 @@
+# Invert foreground colors of defaults for the following, as they are more
+# readable on Gruvbox Kitty Theme.
+color cursor black green bold
+color cursor-blur black green bold
+color title-blur black blue
+color title-focus black blue bold
