@@ -9,6 +9,6 @@ if grep POWER_SUPPLY_STATUS=Discharging $bat > /dev/null; then
   now_perc=$((100 * $now / $full))
 
   if [[ $now_perc -lt $low_perc ]]; then
-    notify-send -u critical -c battery "Low battery!" "$now_perc%"
+    notify-send --icon=battery-caution -u critical -c battery "Low battery!" "$now_perc%"
   fi
 fi

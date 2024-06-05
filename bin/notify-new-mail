@@ -8,7 +8,7 @@ import os
 import shlex
 import subprocess
 
-_NOTIFY_FMT = "notify-send -u normal -c mail {title} {body}"
+_NOTIFY_FMT = "notify-send --icon=mail-mark-unread -u normal -c mail {title} {body}"
 
 
 def _notify_send(mail_dir='INBOX', subject=None, from_=None):
