@@ -1,8 +1,8 @@
 #!/bin/bash -e
 
-curr_hour=$(date +%_H)
+theme=$(/home/teon/bin/theme-for-time-of-day)
 
-if [[ $curr_hour -gt 7 && $curr_hour -lt 17 ]]; then
+if [[ $theme = "light" ]]; then
   kitten themes --cache-age=-1 --reload-in=all Gruvbox Light
 else
   kitten themes --cache-age=-1 --reload-in=all Gruvbox Dark
