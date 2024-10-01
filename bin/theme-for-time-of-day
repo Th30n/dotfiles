@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+curr_hour=$(date +%_H)
+curr_month=$(date +%m)
+
+morning_hour=8
+evening_hour=16
+
+# Setup different hours for March---Aug
+if [[ $curr_month -ge 3 && $curr_month -le 8 ]]; then
+  morning_hour=7
+  evening_hour=17
+fi
+
+if [[ $curr_hour -gt $morning_hour && $curr_hour -lt $evening_hour ]]; then
+  echo "light"
+else
+  echo "dark"
+fi
