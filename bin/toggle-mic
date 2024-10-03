@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+pactl set-source-mute @DEFAULT_SOURCE@ toggle
+killall -SIGUSR1 i3status
+muted=$(pactl get-source-mute @DEFAULT_SOURCE@)
+if [[ $muted = 'Mute: yes' ]]; then
+  notify-send --icon=microphone-disabled-symbolic -c audio "Microphone disabled"
+else
+  notify-send --icon=microphone-sensitivity-high-symbolic -c audio "Microphone enabled"
+fi
