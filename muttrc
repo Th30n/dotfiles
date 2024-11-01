@@ -9,10 +9,14 @@ set send_charset = "utf-8"
 set use_from
 # Make no distinction between new and old unread.
 unset mark_old
+
+# Display some context of email index when reading the email.
+set pager_index_lines = 6
 # Repeat n lines on next/prev page.
 set pager_context = 3
 # Don't allow moving to new mail via page movement.
 set pager_stop
+
 # Group threads only by header data.
 set strict_threads
 set sort = threads
@@ -26,6 +30,8 @@ set crypt_replysignencrypted
 set crypt_verify_sig
 # Block waiting for input for n seconds.
 set timeout = 5
+
+set index_format = "%4C %Z %{%b %d} %-20.20L %?M? [%M]? %s"
 
 # Sidebar Settings
 # ----------------
