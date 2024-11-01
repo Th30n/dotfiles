@@ -44,10 +44,11 @@ parser.add_argument('--mail-dir', '-m', type=str, dest='mail_dir',
 args = parser.parse_args()
 
 account_dir = os.path.join(args.mail_dir, args.account)
-for mail_dir in os.listdir(account_dir):
-    new_dir = os.path.join(account_dir, mail_dir, 'new')
-    if not os.path.isdir(new_dir):
-        continue
+inbox_dir = os.path.join(account_dir, 'INBOX')
+new_dir = os.path.join(account_dir, inbox_dir, 'new')
+if not os.path.isdir(new_dir):
+    _notify_send(subject='Missing INBOX')
+else:
     with os.scandir(new_dir) as mail_it:
         for mail in mail_it:
             atime = int(mail.stat().st_atime)
@@ -59,4 +60,5 @@ for mail_dir in os.listdir(account_dir):
                 subject = _decode_header(headers['subject'])
                 from_name, from_addr = email.utils.parseaddr(headers['from'])
                 from_ = _decode_header(from_name) if from_name else from_addr
-                _notify_send(mail_dir=mail_dir, subject=subject, from_=from_)
+                mailbox_name = os.path.relpath(inbox_dir, account_dir)
+                _notify_send(mail_dir=mailbox_name, subject=subject, from_=from_)
