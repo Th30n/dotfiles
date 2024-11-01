@@ -25,7 +25,8 @@ postsynchook = ~/bin/notify-new-mail -a <ACCOUNT>
 type = Maildir
 localfolders = ~/Mail/<ACCOUNT>
 nametrans = lambda folder: {'sent': '[Gmail]/Sent Mail',
-                           }.get(folder, folder)
+                            'archive': '[Gmail]/All Mail',
+                            }.get(folder, folder)
 
 [Repository <ACCOUNT>-remote]
 type = Gmail
@@ -33,12 +34,12 @@ type = Gmail
 remoteusereval = get_username()
 remotepasseval = get_password()
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-# Don't delete messages on Gmail server.
-expunge = no
 nametrans = lambda folder: {'[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/All Mail': 'archive',
                            }.get(folder, folder)
 # Sync only these folders.
 folderfilter = lambda foldername: foldername in ['INBOX',
+                                                 '[Gmail]/All Mail',
                                                  '[Gmail]/Sent Mail',
                                                 ]
 # Don't (accidentally) create new folders on Gmail server by mirroring local
