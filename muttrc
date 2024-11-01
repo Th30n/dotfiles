@@ -27,7 +27,20 @@ set crypt_verify_sig
 # Block waiting for input for n seconds.
 set timeout = 5
 
+# Sidebar Settings
+# ----------------
+
+set sidebar_visible = yes
+set sidebar_short_path = yes
+set sidebar_folder_indent = yes
+set sidebar_indent_string = ' '
+set mail_check_stats
+set sidebar_format = '%B%* %?N?[%N]? %! '
+color sidebar_divider color0 color0
+
 # Colors
+# ------
+
 color normal color7 default
 color indicator color0 color6
 color status color12 color0
