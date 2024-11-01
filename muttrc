@@ -46,21 +46,33 @@ color sidebar_divider color0 color0
 
 # Colors
 # ------
+# NOTE: The ordering matters.  If multiple things match, it will be colored in
+# order.
 
-color normal color7 default
-color indicator color0 color6
+color normal default default
+color indicator bold color0 color12
 color status color12 color0
-color error color15 color1
+color error bold color15 color1
+
 color hdrdefault color10 default
-color header color3 default "Subject:"
-color tree color8 default
+color header color11 default "Date:"
+color header color2 default "To:"
+color header color12 default "From:"
+color header bold color11 default "Subject:"
+color header color8 default "User-Agent:"
+
 color quoted color8 default
 color markers color8 default
 color signature color10 default
 color search color0 color10
-color index color2 color0 ~N
-color index color1 default ~D
-color index bold color245 default ~v # collapsed thread
+
+color tree color6 default
+color index bold default default ~v # collapsed thread
+color index bold color13 default ~F
+color index bold color2 color0 ~N
+color index bold color1 default ~D
+color index standout bold color11 default ~T # tagged
+
 color attachment color5 default
 # 256 color
 color quoted0 color245 default
