@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-dotfiles="dircolors gitconfig gitignore muttrc repl-help.lisp \
+dotfiles="dircolors gitconfig gitignore mailcap muttrc repl-help.lisp \
   stylish-haskell.yaml terminfo tmux.conf xinitrc Xresources xprofile \
   zsh.d zshenv zshrc"
 nodotfiles=""
