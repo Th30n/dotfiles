@@ -33,6 +33,10 @@ set timeout = 5
 
 set index_format = "%4C %Z %{%b %d} %-20.20L %?M? [%M]? %s"
 
+macro index,pager <esc>$\
+  '<shell-escape>systemctl --user start offlineimap-oneshot.service'\
+  'run offlineimap to sync mail'
+
 # Sidebar Settings
 # ----------------
 
