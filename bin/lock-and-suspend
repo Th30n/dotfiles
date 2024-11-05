@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+# xss-lock --transfer-sleep-lock -- i3lock -c 333333 --nofork
+i3lock -c 333333
+sleep 0.5s
+systemctl suspend
