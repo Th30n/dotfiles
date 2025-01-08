@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 if [[ "$EUID" != "0" ]]; then
   echo "error: you cannot perform this operation unless you are root." >&2
@@ -6,4 +6,7 @@ if [[ "$EUID" != "0" ]]; then
 fi
 
 reflector --verbose -l 10 --sort rate --save /etc/pacman.d/mirrorlist
+if [[ "$1" == "--keyring" ]]; then
+  pacman -Sy --needed archlinux-keyring
+fi
 pacman -Syu
