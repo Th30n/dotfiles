@@ -11,8 +11,10 @@ setopt histignorealldups sharehistory
 # Bash word style (alphanumeric only)
 autoload -U select-word-style
 select-word-style bash
-# Use emacs keybindings even if our EDITOR is set to vi
+# Use Emacs keybindings even if our EDITOR is set to vi
 bindkey -e
+# Bind C-w to kill-region as is default in Emacs
+bindkey '^w' kill-region
 
 #----------------------------------------------------------------------------
 # Special key bindings
