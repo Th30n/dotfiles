@@ -15,6 +15,9 @@ select-word-style bash
 bindkey -e
 # Bind C-w to kill-region as is default in Emacs
 bindkey '^w' kill-region
+# This is unbound by default, but is useful to turn continuation line(s) into
+# an editable multi-line block.
+bindkey '\eq' push-line-or-edit
 
 #----------------------------------------------------------------------------
 # Special key bindings
