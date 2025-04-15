@@ -1,5 +1,29 @@
 #!/bin/bash -e
 
+set -o pipefail
+
+zagreb="45.81444N 15.97798E"
+
+set +e
+# Fetch "sunrise, sunset" times offset by 30min towards noon.  I.e. we'd like
+# to detect 30min after sunrise, and 30min before sunset.
+sunrise_sunset=$(sunwait list offset 30 $zagreb | sed -e 's/, / /')
+sunwait_exit_code=$?
+set -e
+
+if [[ $sunwait_exit_code -eq 0 ]]; then
+    read sunrise sunset <<< "$sunrise_sunset"
+    curr_time=$(date +%H:%M)
+    if [[ "$sunrise" < "$curr_time" && "$curr_time" < "$sunset" ]]; then
+        echo "light"
+    else
+        echo "dark"
+    fi
+    exit 0
+fi
+
+# Fallback if we don't have `sunwait` installed.
+
 curr_hour=$(date +%_H)
 curr_month=$(date +%m)
 
@@ -8,12 +32,12 @@ evening_hour=16
 
 # Setup different hours for March---Aug
 if [[ $curr_month -ge 3 && $curr_month -le 8 ]]; then
-  morning_hour=7
-  evening_hour=17
+    morning_hour=7
+    evening_hour=17
 fi
 
 if [[ $curr_hour -gt $morning_hour && $curr_hour -lt $evening_hour ]]; then
-  echo "light"
+    echo "light"
 else
-  echo "dark"
+    echo "dark"
 fi
