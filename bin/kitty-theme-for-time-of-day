@@ -1,9 +1,14 @@
 #!/bin/bash -e
 
-theme=$(/home/teon/bin/theme-for-time-of-day)
+theme=$(~/bin/theme-for-time-of-day)
+
+light_theme="Gruvbox Light"
+dark_theme="Gruvbox Dark"
 
 if [[ $theme = "light" ]]; then
-  kitten themes --cache-age=-1 --reload-in=all Gruvbox Light
-else
-  kitten themes --cache-age=-1 --reload-in=all Gruvbox Dark
+    if ! grep -q "$light_theme" ~/.config/kitty/current-theme.conf; then
+        kitten themes --cache-age=-1 --reload-in=all "$light_theme"
+    fi
+elif ! grep -q "$dark_theme" ~/.config/kitty/current-theme.conf; then
+    kitten themes --cache-age=-1 --reload-in=all "$dark_theme"
 fi
