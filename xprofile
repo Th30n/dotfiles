@@ -1,2 +1,4 @@
-# Make Caps Lock additional Escape
-setxkbmap -option caps:escape
+# Run `setup-keyboard` which will set up some default bindings.  Currently,
+# this will make Caps Lock an additional Escape or Ctrl, depending on how long
+# it is pressed.
+$HOME/bin/setup-keyboard
