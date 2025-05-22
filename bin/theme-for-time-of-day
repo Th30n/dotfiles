@@ -3,6 +3,7 @@
 set -o pipefail
 
 zagreb="45.81444N 15.97798E"
+oxford="51.75222N -1.25596E"
 
 set +e
 # Fetch "sunrise, sunset" times offset by 30min towards noon.  I.e. we'd like
