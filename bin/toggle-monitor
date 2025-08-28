@@ -41,15 +41,24 @@ def toggle_external_monitor():
     primary = connected_monitors[0]
     if len(connected_monitors) > 1:
         secondary = connected_monitors[1]
+        # xrandr only sets properties, so there can be leftovers from previous
+        # invocation.  Therefore we explicitly reset scale, position and
+        # panning.
         xrandr_cmd = ('xrandr', '--output', primary.name, '--primary', '--auto',
-                      '--output', secondary.name, '--right-of', primary.name, '--auto')
+                      '--scale', '1', '--pos', '0x0', '--panning', '0x0',
+                      '--output', secondary.name, '--auto', '--scale', '1',
+                      '--right-of', primary.name, '--panning', '0x0')
         _notify_send(secondary.name + ' -- ON ', join(xrandr_cmd))
         sp.check_call(xrandr_cmd)
         if len(connected_monitors) > 2:
             _notify_send('Not yet implemented', 'Support for more than 2 monitors',
                          urgency='normal')
     else:
-        xrandr_cmd = ('xrandr', '--output', primary.name, '--primary', '--auto')
+        # xrandr only sets properties, so there can be leftovers from previous
+        # invocation.  Therefore we explicitly reset scale, position and
+        # panning.
+        xrandr_cmd = ('xrandr', '--output', primary.name, '--primary', '--auto',
+                      '--scale', '1', '--pos', '0x0', '--panning', '0x0',)
         for m in monitors:
             if m.is_connected:
                 continue
