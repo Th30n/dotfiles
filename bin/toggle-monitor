@@ -44,10 +44,10 @@ def toggle_external_monitor():
         # xrandr only sets properties, so there can be leftovers from previous
         # invocation.  Therefore we explicitly reset scale, position and
         # panning.
-        xrandr_cmd = ('xrandr', '--output', primary.name, '--primary', '--auto',
+        xrandr_cmd = ('xrandr', '--output', primary.name, '--auto',
                       '--scale', '1', '--pos', '0x0', '--panning', '0x0',
-                      '--output', secondary.name, '--auto', '--scale', '1',
-                      '--right-of', primary.name, '--panning', '0x0')
+                      '--output', secondary.name, '--primary', '--auto',
+                      '--scale', '1', '--right-of', primary.name, '--panning', '0x0')
         _notify_send(secondary.name + ' -- ON ', join(xrandr_cmd))
         sp.check_call(xrandr_cmd)
         if len(connected_monitors) > 2:
