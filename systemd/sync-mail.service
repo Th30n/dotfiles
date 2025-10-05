@@ -1,0 +1,8 @@
+[Unit]
+Description=Run tools like Offlineimap & Notmuch to synchronize E-Mail.
+
+[Service]
+Type=oneshot
+ExecStart=notmuch new
+ExecStart=notmuch dump --gzip --output=/home/teon/.notmuch/tags.dump
+
