@@ -3,7 +3,7 @@ Description=Run sync-mail.service periodically
 
 [Timer]
 OnBootSec=1m
-OnUnitInactiveSec=15m
+OnUnitInactiveSec=5m
 
 [Install]
 WantedBy=timers.target
