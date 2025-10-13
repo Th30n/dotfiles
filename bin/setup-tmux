@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if tmux attach -t $USER; then
+  exit 0
+fi
+
+echo "creating tmux session: $USER"
+
+tmux new -d -s $USER
+tmux splitw -h -t "$USER:1" htop
+tmux neww -d -t $USER mc
+tmux neww -d -t $USER vim --servername vim
+tmux attach -t $USER
