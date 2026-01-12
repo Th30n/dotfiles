@@ -13,3 +13,6 @@
   (do-external-symbols (sym package-designator)
     (describe sym)
     (write-line "--------------------------------------------------")))
+
+(terpri)
+(princ "Call INSTALL-LINEDIT to enable readline-style editing")
