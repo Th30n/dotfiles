@@ -4,6 +4,14 @@ set -o pipefail
 
 zagreb="45.81444N 15.97798E"
 
+curr_month=$(date +%m)
+
+if [[ $curr_month -eq 12 ]]; then
+    # During December always use dark theme
+    echo "dark"
+    exit 0
+fi
+
 set +e
 # Fetch "sunrise, sunset" times offset by 30min towards noon.  I.e. we'd like
 # to detect 30min after sunrise, and 30min before sunset.
@@ -25,7 +33,6 @@ fi
 # Fallback if we don't have `sunwait` installed.
 
 curr_hour=$(date +%_H)
-curr_month=$(date +%m)
 
 morning_hour=8
 evening_hour=16
